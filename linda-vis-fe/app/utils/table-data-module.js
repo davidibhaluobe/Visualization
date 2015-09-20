@@ -2,6 +2,7 @@ import csv_data_module from "./csv-data-module";
 import sparql_data_module from "./sparql-data-module";
 
 var table_data_module = function() {
+  
     var list = [];
     function getContent(selection, datasource) {
         var _location = datasource.location;
@@ -43,3 +44,4 @@ var table_data_module = function() {
 }();
 
 export default table_data_module;
+//
