@@ -9,7 +9,7 @@ export default Ember.Component.extend({
     table: null,
     setContent: function() {
         console.log("TABLE COMPONENT - GENERATING PREVIEW");
-
+        
         var self = this;
         var selection = this.get('preview');
         var datasource = this.get('datasource');
@@ -26,12 +26,14 @@ export default Ember.Component.extend({
 
                 var table = self.$().dataTable({
                     responsive: {
+                       respnsive: true,
                         details: {
                             type: 'inline'
                         }
                     },                 
                     "data": content.slice(1),
-                    "columns": columns
+                    "columns": columns,
+                    "scrollX": true
                 });
                 self.set('table', table);
             });
@@ -40,8 +42,11 @@ export default Ember.Component.extend({
             if (self.get('table')) {
                 self.get('table').api().clear().destroy();
                 self.$().empty();
+                
             }
         }
-    }.observes('preview.[]').on('didInsertElement')
+    }
+            .observes('preview.[]').on('didInsertElement')
 });
+
 
